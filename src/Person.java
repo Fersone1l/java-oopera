@@ -1,9 +1,21 @@
 import java.util.Objects;
 
 public class Person {
-    private String name;
-    private String surname;
-    private Gender gender;
+    protected String name;
+    protected String surname;
+    protected Gender gender;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
+    }
 
     public Person(String name, String surname, Gender gender) {
         this.name = name;

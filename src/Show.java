@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private int duration;
-    private Director director;
-    private ArrayList<Actor> listOfActors;
+    protected String title;
+    protected int duration;
+    protected Director director;
+    protected ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
@@ -45,15 +45,6 @@ public class Show {
         this.listOfActors = listOfActors;
     }
 
-    public boolean searchForActor(Actor otherActor) {
-        for (Actor actor : listOfActors) {
-            if (actor.equals(otherActor)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public Actor searchForActor(String otherActorSurname) { // Поиск актера по фамилии
         if (otherActorSurname == null) return null;
 
@@ -66,7 +57,7 @@ public class Show {
     }
 
     public void addNewActor(Actor newActor) {
-        if (searchForActor(newActor)) {
+        if (listOfActors.contains(newActor)) {
             System.out.println("Актер " + newActor.getName() + " уже играет в спектакле '" + title + "'");
         } else {
             listOfActors.add(newActor);
